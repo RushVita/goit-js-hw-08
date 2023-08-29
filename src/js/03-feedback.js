@@ -21,20 +21,13 @@ function handlerInput() {
 
 updateValue();
 
-btn.addEventListener('click', throttle(handlerBtn, 500));
+form.addEventListener('submit', throttle(handlerBtn, 500));
 function handlerBtn(event) {
   event.preventDefault();
 
   if (localStorage.getItem('feedback-form-state')) {
-    userValue.email = JSON.parse(
-      localStorage.getItem('feedback-form-state')
-    ).email;
-    userValue.comment = JSON.parse(
-      localStorage.getItem('feedback-form-state')
-    ).comment;
+    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
   }
-
-  console.log(userValue);
   localStorage.removeItem('feedback-form-state');
   form.reset();
   formFileds.message.textContent = '';
