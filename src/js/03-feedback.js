@@ -9,8 +9,7 @@ const userValue = {
   comment: '',
 };
 
-form.addEventListener('input', throttle((handlerInput), 500));
-
+form.addEventListener('input', throttle(handlerInput, 500));
 function handlerInput() {
   const { email, message } = formFileds;
 
@@ -19,15 +18,26 @@ function handlerInput() {
 
   localStorage.setItem('feedback-form-state', JSON.stringify(userValue));
 }
-updateValue();
-btn.addEventListener('click', throttle((handlerBtn), 500));
 
+updateValue();
+
+btn.addEventListener('click', throttle(handlerBtn, 500));
 function handlerBtn(event) {
   event.preventDefault();
+
+  if (localStorage.getItem('feedback-form-state')) {
+    userValue.email = JSON.parse(
+      localStorage.getItem('feedback-form-state')
+    ).email;
+    userValue.comment = JSON.parse(
+      localStorage.getItem('feedback-form-state')
+    ).comment;
+  }
+
+  console.log(userValue);
   localStorage.clear();
   form.reset();
   formFileds.message.textContent = '';
-  console.log(userValue);
 }
 
 function updateValue() {
