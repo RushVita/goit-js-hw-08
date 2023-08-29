@@ -35,7 +35,7 @@ function handlerBtn(event) {
   }
 
   console.log(userValue);
-  localStorage.clear();
+  localStorage.removeItem('feedback-form-state');
   form.reset();
   formFileds.message.textContent = '';
 }
