@@ -24,7 +24,6 @@ updateValue();
 form.addEventListener('submit', throttle(handlerBtn, 500));
 function handlerBtn(event) {
   event.preventDefault();
-
   if (localStorage.getItem('feedback-form-state')) {
     console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
   }
