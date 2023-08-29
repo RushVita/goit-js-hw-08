@@ -21,7 +21,7 @@ function handlerInput() {
 
 updateValue();
 
-form.addEventListener('submit', throttle(handlerBtn, 500));
+form.addEventListener('submit', handlerBtn);
 function handlerBtn(event) {
   event.preventDefault();
   if (localStorage.getItem('feedback-form-state')) {
@@ -31,6 +31,7 @@ function handlerBtn(event) {
   form.reset();
   formFileds.message.textContent = '';
 }
+
 
 function updateValue() {
   if (localStorage.getItem('feedback-form-state')) {
